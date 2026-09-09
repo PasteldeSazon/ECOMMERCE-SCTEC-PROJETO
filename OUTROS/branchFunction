@@ -1,8 +1,0 @@
-Branch	Função
-________________________________________
-main	                    Versão final
-develop	                    Desenvolvimento e integração
-feature/carrinho	        Produtos, cálculos, componentes do carrinho
-feature/pagamento	        Formulário, validação e regra de pagamento
-feature/rotas	            React Router, páginas de sucesso e falha
-feature/interface	        CSS, responsividade e acessibilidade
