@@ -9,15 +9,20 @@ function Carrinho() {
     <>
       <h1>SEU CARRINHO</h1>
       <div className="produto">
-        {produtos.map((produto) => (
-          <ItemCarrinho
-            key={produto.id}
-            imagem={produto.imagem}
-            nome={produto.nome}
-            preco={produto.preco}
-            quantidade={produto.quantidade}
-          />
-        ))}
+        {produtos.map((produto) => {
+          const precoTotal = produto.preco * produto.quantidade;
+
+          return (
+            <ItemCarrinho
+              key={produto.id}
+              imagem={produto.imagem}
+              nome={produto.nome}
+              precoTotal={precoTotal}
+              precoUnitario={produto.preco}
+              quantidade={produto.quantidade}
+            />
+          );
+        })}
       </div>
       <span className="total">
         <strong>Total:R$ {total.toFixed(2)}</strong>
