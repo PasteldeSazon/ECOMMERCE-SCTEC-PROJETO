@@ -1,6 +1,7 @@
 import "../assets/styles/style.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Cabecalho from "../components/Cabecalho";
 
 function Falha() {
   const [falha, setFalha] = useState(true);
@@ -19,10 +20,10 @@ function Falha() {
 
   return (
     <>
-      <h1>ERRO 244: AVISO DE GOLPE</h1>
-      <p>
-        Esta mensagem está aparecendo pois os 16 dígitos do cartão são iguais!!!
-      </p>
+      <Cabecalho
+        titulo="ERRO 244: AVISO DE GOLPE"
+        subtitulo="Esta mensagem está aparecendo pois os 16 dígitos do cartão são iguais!!!"
+      />
       <p>
         Ou você é um golpista, ou não preencheu o formulário corretamente.
       </p>
