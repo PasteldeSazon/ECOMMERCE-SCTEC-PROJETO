@@ -10,7 +10,7 @@ function Pagamento() {
   } = useForm();
 
   return (
-    <>
+    <section className="fundo">
       <h1>Formulário para compra</h1>
       <form
         onSubmit={handleSubmit((data) => {
@@ -125,11 +125,11 @@ function Pagamento() {
           </div>
         </div>
 
-        <button type="submit" className="btnPedido">
+        <button type="submit" className="btnRotas">
           Finalizar pedido
         </button>
       </form>
-    </>
+    </section>
   );
 }
 

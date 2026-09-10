@@ -2,10 +2,10 @@ function ItemCarrinho({ imagem, nome, precoTotal, precoUnitario, quantidade }) {
   return (
     <div className="cardCarrinho">
       <img src={imagem} alt={nome} />
-      <span>Nome: {nome}</span>
-      <span>Preço total: R$ {precoTotal.toFixed(2)}</span>
-      <span style={{color: "#1a1a1a", fontSize: "15px"}}>Preço unitário: R$ {precoUnitario.toFixed(2)}</span>
-      <span>Quantidade: {quantidade}</span>
+      <span><b>Nome:</b>  {nome}</span>
+      <span><b>Preço total:</b> R$ {precoTotal.toFixed(2)}</span>
+      <span><b>Preço unitário:</b> R$ {precoUnitario.toFixed(2)}</span>
+      <span><b>Quantidade:</b> {quantidade}</span>
     </div>
   );
 }

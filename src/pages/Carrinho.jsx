@@ -36,7 +36,7 @@ function Carrinho() {
     return <p className="loading">Carregando produtos do servidor...</p>;
   }
   return (
-    <>
+    <section className="fundo">
       <h1>SEU CARRINHO</h1>
       <div className="produto">
         {lista.map((produto) => {
@@ -57,11 +57,8 @@ function Carrinho() {
       <span className="total">
         <strong>Total:R$ {total.toFixed(2)}</strong>
       </span>
-      <div className="btnCompra">
-        {/* <button>CONTINUAR({produtos.length})</button> */}
-        <Link to={"/Pagamento"}>CONTINUAR({lista.length})</Link>
-      </div>
-    </>
+        <Link className="btnRotas" to={"/Pagamento"}>CONTINUAR ({lista.length})</Link>
+    </section>
   );
 }
 
