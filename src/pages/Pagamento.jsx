@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import usePagamento from "../hooks/usePagamento";
 import "../assets/styles/style.css";
 function Pagamento() {
-  const navigate = useNavigate();
+  const { finalizarPagamento } = usePagamento();
   const {
     register,
     handleSubmit,
@@ -14,9 +14,7 @@ function Pagamento() {
       <h1>Formulário para compra</h1>
       <form
         onSubmit={handleSubmit((data) => {
-          const cartaoComDigitosIguais = /^(\d)\1{15}$/.test(data.NumCartao);
-
-          navigate(cartaoComDigitosIguais ? "/Falha" : "/Sucesso");
+          finalizarPagamento(data.NumCartao);
         })}
       >
         <div className="collumInputs">
