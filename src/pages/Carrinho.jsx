@@ -1,4 +1,5 @@
 import produtos from "../data/produtos";
+import { useState, useEffect } from "react";
 import ItemCarrinho from "../components/ItemCarrinho";
 import { Link } from "react-router-dom";
 
@@ -6,11 +7,39 @@ function Carrinho() {
   const total = produtos.reduce((acumulador, produto) => {
     return acumulador + produto.preco * produto.quantidade;
   }, 0);
+
+  const [lista, setLista] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+
+  useEffect(() => {
+    const buscarDadosData = async () => {
+      try {
+        setCarregando(true);
+
+        const dadosRecebidos = await new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(produtos);
+          }, 800);
+        });
+
+        setLista(dadosRecebidos);
+      } catch (erro) {
+        console.log("Erro ao buscar os produtos: ", erro);
+      } finally {
+        setCarregando(false);
+      }
+    };
+    buscarDadosData();
+  }, []);
+
+  if (carregando) {
+    return <p className="loading">Carregando produtos do servidor...</p>;
+  }
   return (
     <>
       <h1>SEU CARRINHO</h1>
       <div className="produto">
-        {produtos.map((produto) => {
+        {lista.map((produto) => {
           const precoTotal = produto.preco * produto.quantidade;
 
           return (
@@ -30,7 +59,7 @@ function Carrinho() {
       </span>
       <div className="btnCompra">
         {/* <button>CONTINUAR({produtos.length})</button> */}
-        <Link to={"/Pagamento"}>CONTINUAR({produtos.length})</Link>
+        <Link to={"/Pagamento"}>CONTINUAR({lista.length})</Link>
       </div>
     </>
   );
