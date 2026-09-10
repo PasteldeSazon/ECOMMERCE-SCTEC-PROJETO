@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import "./assets/bagulhos.css";
+import "../assets/styles/style.css";
 function Pagamento() {
   const {
     register,

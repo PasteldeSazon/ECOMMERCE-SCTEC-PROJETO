@@ -1,5 +1,6 @@
 import produtos from "../data/produtos";
 import ItemCarrinho from "../components/ItemCarrinho";
+import { Link } from "react-router-dom";
 
 function Carrinho() {
   const total = produtos.reduce((acumulador, produto) => {
@@ -28,7 +29,8 @@ function Carrinho() {
         <strong>Total:R$ {total.toFixed(2)}</strong>
       </span>
       <div className="btnCompra">
-        <button>CONTINUAR({produtos.length})</button>
+        {/* <button>CONTINUAR({produtos.length})</button> */}
+        <Link to={"/Pagamento"}>CONTINUAR({produtos.length})</Link>
       </div>
     </>
   );
