@@ -1,8 +1,13 @@
 import { useForm } from "react-hook-form";
 import usePagamento from "../hooks/usePagamento";
+import produtos from "../data/produtos";
 import "../assets/styles/style.css";
 function Pagamento() {
-  const { finalizarPagamento } = usePagamento();
+  const { finalizarPagamento, processando } = usePagamento();
+  const total = produtos.reduce(
+    (acumulador, produto) => acumulador + produto.preco * produto.quantidade,
+    0,
+  );
   const {
     register,
     handleSubmit,
@@ -12,6 +17,7 @@ function Pagamento() {
   return (
     <section className="fundo">
       <h1>Formulário para compra</h1>
+      <p className="total">Total da compra: R$ {total.toFixed(2)}</p>
       <form
         onSubmit={handleSubmit((data) => {
           finalizarPagamento(data.NumCartao);
@@ -125,8 +131,13 @@ function Pagamento() {
           </div>
         </div>
 
-        <button type="submit" className="btnRotas">
-          Finalizar pedido
+        {processando && (
+          <p className="loading" aria-live="polite">
+            Processando compra...
+          </p>
+        )}
+        <button type="submit" className="btnRotas" disabled={processando}>
+          {processando ? "Aguarde..." : "Finalizar pedido"}
         </button>
       </form>
     </section>

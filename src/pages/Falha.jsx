@@ -33,6 +33,7 @@ function Falha() {
           titulo="ERRO 244: AVISO DE GOLPE"
           subtitulo="Esta mensagem está aparecendo pois os 16 dígitos do cartão são iguais!!!"
         />
+        <p role="alert">tentativa de golpe</p>
         <p>
           Ou você é um golpista, ou não preencheu o formulário corretamente.
         </p>
