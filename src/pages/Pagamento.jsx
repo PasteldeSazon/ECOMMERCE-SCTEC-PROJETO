@@ -64,10 +64,8 @@ function Pagamento() {
             placeholder="Número do seu cartão"
             {...register("NumCartao", {
               required: "Número do cartão é obrigatório",
-              // 1. Remove espaços e hifens antes de validar e salvar no estado
               setValueAs: (value) => value.replace(/[\s-]/g, ""),
               pattern: {
-                // 2. Agora o pattern só precisa checar se restaram exatamente 16 números
                 value: /^[0-9]{16}$/,
                 message:
                   "O número do cartão deve conter exatamente 16 números.",

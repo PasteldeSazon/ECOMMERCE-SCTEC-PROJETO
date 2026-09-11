@@ -36,7 +36,7 @@ function Carrinho() {
   }, []);
 
   if (carregando) {
-    return <p className="loading">Carregando produtos do servidor...</p>;
+    return  <div className="loading"><p>Carregando produtos do servidor...</p></div> ;
   }
 
   if (erro) {
