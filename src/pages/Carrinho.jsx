@@ -1,0 +1,79 @@
+import produtos from "../data/produtos";
+import { useState, useEffect } from "react";
+import ItemCarrinho from "../components/ItemCarrinho";
+import { Link } from "react-router-dom";
+
+function Carrinho() {
+  const total = produtos.reduce((acumulador, produto) => {
+    return acumulador + produto.preco * produto.quantidade;
+  }, 0);
+
+  const [lista, setLista] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState("");
+
+  useEffect(() => {
+    const buscarDadosData = async () => {
+      try {
+        setCarregando(true);
+        setErro("");
+
+        const dadosRecebidos = await new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(produtos);
+          }, 800);
+        });
+
+        setLista(dadosRecebidos);
+      } catch (erro) {
+        console.error("Erro ao buscar os produtos: ", erro);
+        setErro("Não foi possível carregar os produtos. Tente novamente.");
+      } finally {
+        setCarregando(false);
+      }
+    };
+    buscarDadosData();
+  }, []);
+
+  if (carregando) {
+    return  <div className="loading"><p>Carregando produtos do servidor...</p></div> ;
+  }
+
+  if (erro) {
+    return (
+      <section className="fundo">
+        <p className="erro" role="alert">
+          {erro}
+        </p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="fundo">
+      <h1>SEU CARRINHO</h1>
+      <div className="produto">
+        {lista.map((produto) => {
+          const precoTotal = produto.preco * produto.quantidade;
+
+          return (
+            <ItemCarrinho
+              key={produto.id}
+              imagem={produto.imagem}
+              nome={produto.nome}
+              precoTotal={precoTotal}
+              precoUnitario={produto.preco}
+              quantidade={produto.quantidade}
+            />
+          );
+        })}
+      </div>
+      <span className="total">
+        <strong>Total:R$ {total.toFixed(2)}</strong>
+      </span>
+        <Link className="btnRotas" to={"/Pagamento"}>CONTINUAR ({lista.length})</Link>
+    </section>
+  );
+}
+
+export default Carrinho;
