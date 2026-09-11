@@ -10,11 +10,13 @@ function Carrinho() {
 
   const [lista, setLista] = useState([]);
   const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState("");
 
   useEffect(() => {
     const buscarDadosData = async () => {
       try {
         setCarregando(true);
+        setErro("");
 
         const dadosRecebidos = await new Promise((resolve) => {
           setTimeout(() => {
@@ -24,7 +26,8 @@ function Carrinho() {
 
         setLista(dadosRecebidos);
       } catch (erro) {
-        console.log("Erro ao buscar os produtos: ", erro);
+        console.error("Erro ao buscar os produtos: ", erro);
+        setErro("Não foi possível carregar os produtos. Tente novamente.");
       } finally {
         setCarregando(false);
       }
@@ -35,6 +38,17 @@ function Carrinho() {
   if (carregando) {
     return <p className="loading">Carregando produtos do servidor...</p>;
   }
+
+  if (erro) {
+    return (
+      <section className="fundo">
+        <p className="erro" role="alert">
+          {erro}
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section className="fundo">
       <h1>SEU CARRINHO</h1>
