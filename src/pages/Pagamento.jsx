@@ -20,6 +20,7 @@ function Pagamento() {
       <p className="total">Total da compra: R$ {total.toFixed(2)}</p>
       <form
         onSubmit={handleSubmit((data) => {
+          // debugger;
           finalizarPagamento(data.NumCartao);
         })}
       >
