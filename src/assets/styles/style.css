@@ -132,3 +132,142 @@ input::placeholder {
   text-align: center;
   font-size: 20px;
 }
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  h1 {
+    font-size: 38px;
+  }
+
+  p,
+  span {
+    font-size: 18px;
+  }
+
+  .produto {
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .cardCarrinho {
+    flex: 0 0 calc(50% - 8px);
+    min-width: 0;
+    padding: 16px;
+  }
+
+  .cardCarrinho img {
+    width: 130px;
+    height: 130px;
+  }
+
+  form {
+    width: min(90%, 720px);
+  }
+
+  label {
+    font-size: 20px;
+  }
+
+  input,
+  input::placeholder {
+    font-size: 17px;
+  }
+
+  .btnRotas {
+    padding: 20px 26px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 767px) {
+  h1 {
+    padding: 0 14px;
+    font-size: 32px;
+  }
+
+  p,
+  span {
+    font-size: 16px;
+  }
+
+  .produto {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .cardCarrinho {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding: 16px;
+  }
+
+  .cardCarrinho img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .total {
+    padding: 0 12px;
+    font-size: 21px;
+  }
+
+  form {
+    width: calc(100% - 24px);
+  }
+
+  .rowInputs {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  input,
+  input::placeholder {
+    font-size: 16px;
+  }
+
+  .btnRotas {
+    width: calc(100% - 24px);
+    padding: 16px;
+    text-align: center;
+  }
+
+  .IMGEstado img {
+    max-width: 80%;
+    height: auto;
+  }
+
+  .textSusFal {
+    padding: 0 16px;
+    font-size: 16px;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 420px) {
+  h1 {
+    font-size: 27px;
+  }
+
+  .cardCarrinho {
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  .cardCarrinho img {
+    width: 120px;
+    height: 120px;
+  }
+
+  form {
+    width: calc(100% - 16px);
+  }
+
+  .btnRotas {
+    width: calc(100% - 16px);
+    font-size: 17px;
+  }
+}
